@@ -12,3 +12,10 @@ output "subnets" {
         aws_subnet.private_b
     ]
 }
+
+output "subnets_public" {
+    value = [
+        aws_subnet.public_a,
+        aws_subnet.public_b
+    ]
+}
