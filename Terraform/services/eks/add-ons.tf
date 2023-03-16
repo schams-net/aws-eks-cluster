@@ -35,17 +35,16 @@ resource "aws_eks_addon" "kube_proxy" {
     addon_version = "v1.25.6-eksbuild.1"
 }
 
-#resource "aws_eks_addon" "coredns" {
-#    cluster_name = aws_eks_cluster.default.name
-#    addon_name = "coredns"
-#
-#    # Kubernetes version 1.24
-#    addon_version = "v1.8.7-eksbuild.3"
-#
-#    # Kubernetes version 1.25
-#    addon_version = "v1.9.3-eksbuild.2"
-#
-#}
+resource "aws_eks_addon" "coredns" {
+    cluster_name = aws_eks_cluster.default.name
+    addon_name = "coredns"
+
+    # Kubernetes version 1.24
+    #addon_version = "v1.8.7-eksbuild.3"
+
+    # Kubernetes version 1.25
+    addon_version = "v1.9.3-eksbuild.2"
+}
 
 resource "aws_eks_addon" "vpc_cni" {
     cluster_name = aws_eks_cluster.default.name
