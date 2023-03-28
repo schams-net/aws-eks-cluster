@@ -12,6 +12,15 @@ module "aws_iam" {
     tags = var.tags
 }
 
+## Amazon RDS Aurora Serverless (MySQL)
+#module "aws_rds_cluster" {
+#    source = "./services/rds-aurora-mysql"
+#    vpc = module.aws_vpc.vpc
+#    subnets = module.aws_vpc.subnets
+#    availability_zones = ["ap-southeast-2a", "ap-southeast-2b"]
+#    tags = var.tags
+#}
+
 # Amazon Elastic Kubernetes Service (EKS)
 module "aws_eks" {
     source = "./services/eks"
