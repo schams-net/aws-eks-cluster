@@ -25,8 +25,7 @@ module "aws_iam" {
 module "aws_eks" {
     source = "./services/eks"
     vpc = module.aws_vpc.vpc
-    #subnets = module.aws_vpc.subnets
-    subnets = module.aws_vpc.subnets_public
+    subnets = module.aws_vpc.subnets
     eks_role = module.aws_iam.eks_role
     eks_role_policies = module.aws_iam.eks_role_policies
     eks_node_group_role = module.aws_iam.eks_node_group_role

@@ -9,7 +9,7 @@
 # Terraform Documentation:
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
 
-resource "aws_subnet" "public_a" {
+resource "aws_subnet" "zone_a" {
     vpc_id = aws_vpc.default.id
     availability_zone = "ap-southeast-2a"
     cidr_block = "192.168.0.0/18"
@@ -20,7 +20,7 @@ resource "aws_subnet" "public_a" {
     }
 }
 
-resource "aws_subnet" "public_b" {
+resource "aws_subnet" "zone_b" {
     vpc_id = aws_vpc.default.id
     availability_zone = "ap-southeast-2b"
     cidr_block = "192.168.64.0/18"
@@ -28,23 +28,5 @@ resource "aws_subnet" "public_b" {
     tags = {
         Name = "${var.tags.Name} public zone B"
         "kubernetes.io/role/elb" = "1"
-    }
-}
-
-resource "aws_subnet" "private_a" {
-    vpc_id = aws_vpc.default.id
-    availability_zone = "ap-southeast-2a"
-    cidr_block = "192.168.128.0/18"
-    tags = {
-        Name = "${var.tags.Name} private zone A"
-    }
-}
-
-resource "aws_subnet" "private_b" {
-    vpc_id = aws_vpc.default.id
-    availability_zone = "ap-southeast-2b"
-    cidr_block = "192.168.192.0/18"
-    tags = {
-        Name = "${var.tags.Name} private zone B"
     }
 }
