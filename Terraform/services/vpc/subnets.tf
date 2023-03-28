@@ -7,7 +7,7 @@
 # https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html
 #
 # Terraform Documentation:
-# @TODO
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
 
 resource "aws_subnet" "public_a" {
     vpc_id = aws_vpc.default.id
