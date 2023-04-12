@@ -14,7 +14,7 @@
 
 resource "aws_security_group" "control_plane" {
     name = "${var.tags.Name}-ControlPlaneSecurityGroup"
-    description = "${var.tags.Name}: Cluster communication with worker nodes"
+    description = "[${var.tags.Name}] Cluster communication with worker nodes"
     vpc_id = var.vpc.id
 
     egress {
@@ -25,8 +25,7 @@ resource "aws_security_group" "control_plane" {
         ipv6_cidr_blocks = ["::/0"]
     }
 
-    tags = {
-        Name = "${var.tags.Name} - Control Plane"
-        billing-id = var.tags.billing-id
-    }
+    tags = merge(var.tags, {
+        Name = "[${var.tags.Name}] Kubernetes Control Plane"
+    })
 }

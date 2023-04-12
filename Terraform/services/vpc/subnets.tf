@@ -15,8 +15,8 @@ resource "aws_subnet" "subnets" {
     availability_zone = data.aws_availability_zones.available.names[count.index]
     cidr_block = cidrsubnet(var.cidr_block, 2, count.index)
     map_public_ip_on_launch = true
-    tags = {
+    tags = merge(var.tags, {
         Name = "[${var.tags.Name}] public zone ${data.aws_availability_zones.available.names[count.index]}"
         "kubernetes.io/role/elb" = "1"
-    }
+    })
 }

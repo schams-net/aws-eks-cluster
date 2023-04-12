@@ -14,8 +14,7 @@
 
 resource "aws_default_security_group" "default_vpc" {
     vpc_id = aws_vpc.default.id
-    tags = {
-        Name = "${var.tags.Name} - VPC"
-        billing-id = var.tags.billing-id
-    }
+    tags = merge(var.tags, {
+        Name = "[${var.tags.Name}] VPC"
+    })
 }
