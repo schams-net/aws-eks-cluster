@@ -26,12 +26,8 @@ resource "aws_route_table" "public" {
     }
 }
 
-resource "aws_route_table_association" "subnet_zone_a" {
-    subnet_id = aws_subnet.zone_a.id
-    route_table_id = aws_route_table.public.id
-}
-
-resource "aws_route_table_association" "subnet_zone_b" {
-    subnet_id = aws_subnet.zone_b.id
+resource "aws_route_table_association" "subnets" {
+    count = var.subnet_count
+    subnet_id = aws_subnet.subnets[count.index].id
     route_table_id = aws_route_table.public.id
 }

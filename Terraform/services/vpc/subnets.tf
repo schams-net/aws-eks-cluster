@@ -9,24 +9,14 @@
 # Terraform Documentation:
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
 
-resource "aws_subnet" "zone_a" {
+resource "aws_subnet" "subnets" {
+    count = var.subnet_count
     vpc_id = aws_vpc.default.id
-    availability_zone = "ap-southeast-2a"
-    cidr_block = "192.168.0.0/18"
+    availability_zone = data.aws_availability_zones.available.names[count.index]
+    cidr_block = cidrsubnet(var.cidr_block, 2, count.index)
     map_public_ip_on_launch = true
     tags = {
-        Name = "${var.tags.Name} public zone A"
-        "kubernetes.io/role/elb" = "1"
-    }
-}
-
-resource "aws_subnet" "zone_b" {
-    vpc_id = aws_vpc.default.id
-    availability_zone = "ap-southeast-2b"
-    cidr_block = "192.168.64.0/18"
-    map_public_ip_on_launch = true
-    tags = {
-        Name = "${var.tags.Name} public zone B"
+        Name = "[${var.tags.Name}] public zone ${data.aws_availability_zones.available.names[count.index]}"
         "kubernetes.io/role/elb" = "1"
     }
 }

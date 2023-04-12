@@ -5,8 +5,5 @@ output "vpc" {
 }
 
 output "subnets" {
-    value = [
-        aws_subnet.zone_a,
-        aws_subnet.zone_b
-    ]
+    value = aws_subnet.subnets
 }
