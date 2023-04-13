@@ -25,7 +25,11 @@ resource "aws_rds_cluster" "default" {
     engine_version = "8.0.mysql_aurora.3.03.0"
 
     engine_mode = "provisioned"
-    availability_zones = var.availability_zones
+    availability_zones = [
+        data.aws_availability_zones.available.names[0],
+        data.aws_availability_zones.available.names[1],
+        data.aws_availability_zones.available.names[2]
+    ]
     master_username = "dbadmin"
     master_password = "password"
     skip_final_snapshot = true
@@ -57,8 +61,5 @@ resource "aws_rds_cluster" "default" {
     vpc_security_group_ids = [ aws_security_group.rds.id ]
     #db_cluster_parameter_group_name = var.parameter_group.name
 
-    tags = {
-        Name = "${var.tags.Name}"
-        billing-id = var.tags.billing-id
-    }
+    tags = var.tags
 }

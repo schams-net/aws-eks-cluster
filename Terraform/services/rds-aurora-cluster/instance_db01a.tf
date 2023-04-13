@@ -14,8 +14,10 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
 
 resource "aws_rds_cluster_instance" "serverless_db01a" {
+    # @TODO
+    #count = ...
 
-    identifier = "aurora-serverless-${var.availability_zones[0]}"
+    identifier = "aurora-serverless-${data.aws_availability_zones.available.names[0]}"
     cluster_identifier = aws_rds_cluster.default.id
     instance_class = "db.serverless"
     engine = aws_rds_cluster.default.engine
@@ -23,7 +25,7 @@ resource "aws_rds_cluster_instance" "serverless_db01a" {
 
     publicly_accessible = false
     apply_immediately = true
-    availability_zone = var.availability_zones[0]
+    availability_zone = data.aws_availability_zones.available.names[0]
 
     # Can't configure a value for "network_type": its value will be decided
     # automatically based on the result of applying this configuration.
@@ -32,8 +34,7 @@ resource "aws_rds_cluster_instance" "serverless_db01a" {
     db_subnet_group_name = aws_db_subnet_group.default.name
     copy_tags_to_snapshot = true
 
-    tags = {
-        Name = "${var.tags.Name} ${var.availability_zones[0]}"
-        billing-id = var.tags.billing-id
-    }
+    tags = merge(var.tags, {
+        Name = "${var.tags.Name} ${data.aws_availability_zones.available.names[0]}"
+    })
 }

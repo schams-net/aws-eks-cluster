@@ -10,6 +10,6 @@
 # @TODO
 
 resource "aws_db_subnet_group" "default" {
-    name = var.subnet_group_name
+    name = "${lower(var.tags.Name)}"
     subnet_ids = var.subnets[*].id
 }

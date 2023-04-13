@@ -18,10 +18,10 @@ resource "aws_security_group" "rds" {
         to_port = 3306
         protocol = "tcp"
         # @TODO
-        cidr_blocks = ["10.10.110.0/24", "10.10.120.0/24", "10.10.130.0/24"]
+        #cidr_blocks = ["10.10.110.0/24", "10.10.120.0/24", "10.10.130.0/24"]
+        cidr_blocks = ["0.0.0.0/0"]
     }
-    tags = {
-        Name = "${var.tags.Name} RDS Aurora cluster"
-        billing-id = var.tags.billing-id
-    }
+    tags = merge(var.tags, {
+        Name = "[${var.tags.Name}] RDS Aurora cluster"
+    })
 }
