@@ -31,6 +31,9 @@ resource "aws_eks_node_group" "default" {
         max_size = 4
     }
 
+    labels = {
+    }
+
     update_config {
         max_unavailable = 1
     }
