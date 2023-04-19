@@ -25,11 +25,9 @@ resource "aws_rds_cluster" "default" {
     engine_version = "8.0.mysql_aurora.3.03.0"
 
     engine_mode = "provisioned"
-    availability_zones = [
-        data.aws_availability_zones.available.names[0],
-        data.aws_availability_zones.available.names[1],
-        data.aws_availability_zones.available.names[2]
-    ]
+
+    availability_zones = var.subnets[*].availability_zone
+
     master_username = "dbadmin"
     master_password = "password"
     skip_final_snapshot = true
