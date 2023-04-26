@@ -2,19 +2,19 @@
 
 #  Amazon Virtual Private Cloud (Amazon VPC)
 module "aws_vpc" {
-    source = "./services/vpc"
+    source = "./modules/vpc"
     tags = var.tags
 }
 
 # Amazon Identity and Access Management (IAM)
 module "aws_iam" {
-    source = "./services/iam"
+    source = "./modules/iam"
     tags = var.tags
 }
 
 # Amazon RDS Aurora Serverless (MySQL/PostgreSQL)
 module "aws_rds_cluster" {
-    source = "./services/rds-aurora-cluster"
+    source = "./modules/rds-aurora-cluster"
     vpc = module.aws_vpc.vpc
     subnets = module.aws_vpc.subnets
     #availability_zones = ["ap-southeast-2a", "ap-southeast-2b"]
@@ -23,7 +23,7 @@ module "aws_rds_cluster" {
 
 # Amazon Elastic Kubernetes Service (EKS)
 module "aws_eks" {
-    source = "./services/eks"
+    source = "./modules/eks"
     vpc = module.aws_vpc.vpc
     subnets = module.aws_vpc.subnets
     eks_role = module.aws_iam.eks_role
