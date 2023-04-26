@@ -17,7 +17,6 @@ module "aws_rds_cluster" {
     source = "./modules/rds-aurora-cluster"
     vpc = module.aws_vpc.vpc
     subnets = module.aws_vpc.subnets
-    #availability_zones = ["ap-southeast-2a", "ap-southeast-2b"]
     tags = var.tags
 }
 
