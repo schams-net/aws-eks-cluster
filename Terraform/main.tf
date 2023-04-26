@@ -30,5 +30,12 @@ module "aws_eks" {
     eks_role_policies = module.aws_iam.eks_role_policies
     eks_node_group_role = module.aws_iam.eks_node_group_role
     eks_node_group_role_policies = module.aws_iam.eks_node_group_role_policies
+    sns_topic_autoscaling_notification = module.aws_sns.auto_scaling_notifications
+    tags = var.tags
+}
+
+# Amazon Simple Notification Service (SNS)
+module "aws_sns" {
+    source = "./modules/sns"
     tags = var.tags
 }
