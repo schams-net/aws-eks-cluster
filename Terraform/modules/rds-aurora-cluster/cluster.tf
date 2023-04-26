@@ -51,8 +51,7 @@ resource "aws_rds_cluster" "default" {
 
     copy_tags_to_snapshot = true
 
-    storage_encrypted = false
-    #storage_encrypted = true
+    storage_encrypted = true
     #kms_key_id = var.kms_key_rds_aurora_arn
 
     db_subnet_group_name = aws_db_subnet_group.default.name
