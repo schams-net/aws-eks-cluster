@@ -26,7 +26,16 @@ resource "aws_rds_cluster" "default" {
 
     engine_mode = "provisioned"
 
+    # List of EC2 Availability Zones for the DB cluster storage where DB cluster instances can
+    # be created. RDS automatically assigns 3 AZs if less than 3 AZs are configured, which will
+    # show as a difference requiring resource recreation next Terraform apply. The Terraform
+    # documentation recommends specifying 3 AZs or using the lifecycle configuration block
+    # ignore_changes argument if necessary. A maximum of 3 AZs can be configured.
     availability_zones = var.subnets[*].availability_zone
+
+    lifecycle {
+        ignore_changes = [ availability_zones ]
+    }
 
     master_username = "dbadmin"
     manage_master_user_password = true
