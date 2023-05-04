@@ -20,6 +20,13 @@ module "aws_rds_cluster" {
     tags = var.tags
 }
 
+# AWS Secrets Manager
+module "aws_secrets_manager" {
+    source = "./modules/secrets-manager"
+    rds_aurora_cluster = module.aws_rds_cluster.rds_aurora_cluster
+    tags = var.tags
+}
+
 # Amazon Elastic Kubernetes Service (EKS)
 module "aws_eks" {
     source = "./modules/eks"

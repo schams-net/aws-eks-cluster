@@ -29,7 +29,9 @@ resource "aws_rds_cluster" "default" {
     availability_zones = var.subnets[*].availability_zone
 
     master_username = "dbadmin"
-    master_password = "password"
+    manage_master_user_password = true
+    #master_user_secret_kms_key_id = aws_kms_key.example.key_id
+
     skip_final_snapshot = true
 
     serverlessv2_scaling_configuration {
