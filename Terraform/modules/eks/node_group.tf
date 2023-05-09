@@ -19,7 +19,7 @@ resource "aws_eks_node_group" "default" {
     version = aws_eks_cluster.default.version
     release_version = nonsensitive(data.aws_ssm_parameter.eks_ami_release_version.value)
     node_group_name = "example"
-    node_role_arn = var.eks_node_group_role.arn
+    node_role_arn = var.iam_roles.ec2.arn
     ami_type = "AL2_x86_64"
     instance_types = ["t3.small"]
     subnet_ids = var.subnets[*].id

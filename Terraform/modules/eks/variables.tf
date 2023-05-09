@@ -6,13 +6,10 @@ variable "vpc" {
 variable "subnets" {
 }
 
-variable "eks_role" {
+variable "iam_roles" {
 }
 
 variable "eks_role_policies" {
-}
-
-variable "eks_node_group_role" {
 }
 
 variable "eks_node_group_role_policies" {

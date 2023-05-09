@@ -1,11 +1,10 @@
 # Output variables
 
-output "eks_role" {
-    value = aws_iam_role.eks
-}
-
-output "eks_node_group_role" {
-    value = aws_iam_role.eks_node_group
+output "roles" {
+    value = {
+        "eks" = aws_iam_role.eks
+        "ec2" = aws_iam_role.eks_node_group
+    }
 }
 
 output "eks_role_policies" {

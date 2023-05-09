@@ -14,7 +14,7 @@
 
 resource "aws_eks_cluster" "default" {
     name = var.tags.Name
-    role_arn = var.eks_role.arn
+    role_arn = var.iam_roles.eks.arn
 
 	# Kubernetes master version. If you do not specify a value, the latest available version at
 	# resource creation is used and no upgrades will occur except those automatically triggered by

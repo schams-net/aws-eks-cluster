@@ -32,9 +32,8 @@ module "aws_eks" {
     source = "./modules/eks"
     vpc = module.aws_vpc.vpc
     subnets = module.aws_vpc.subnets
-    eks_role = module.aws_iam.eks_role
+    iam_roles = module.aws_iam.roles
     eks_role_policies = module.aws_iam.eks_role_policies
-    eks_node_group_role = module.aws_iam.eks_node_group_role
     eks_node_group_role_policies = module.aws_iam.eks_node_group_role_policies
     sns_topic_autoscaling_notification = module.aws_sns.auto_scaling_notifications
     tags = var.tags
