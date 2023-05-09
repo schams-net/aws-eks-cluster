@@ -21,9 +21,13 @@ resource "aws_eks_node_group" "default" {
     node_group_name = "example"
     node_role_arn = var.eks_node_group_role.arn
     ami_type = "AL2_x86_64"
-    disk_size = 16
     instance_types = ["t3.small"]
     subnet_ids = var.subnets[*].id
+
+    launch_template {
+        id = aws_launch_template.default.id
+        version = aws_launch_template.default.latest_version
+    }
 
     scaling_config {
         min_size = 2
