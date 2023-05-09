@@ -23,3 +23,10 @@ resource "random_integer" "rand" {
 #    #role_lambda_function_update_domain_record = "Lambda-${var.project_identifier}-update-domain_record"
 #
 #}
+
+data "aws_caller_identity" "current" {
+}
+
+locals {
+    account_id = data.aws_caller_identity.current.account_id
+}

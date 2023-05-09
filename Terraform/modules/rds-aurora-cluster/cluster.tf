@@ -41,6 +41,11 @@ resource "aws_rds_cluster" "default" {
     manage_master_user_password = true
     #master_user_secret_kms_key_id = aws_kms_key.example.key_id
 
+    iam_database_authentication_enabled = true
+
+    # List of ARNs for the IAM roles to associate to the RDS Cluster.
+    #iam_roles = [ ... ]
+
     # Name for an automatically created database on cluster creation
     database_name = replace(lower(var.tags.Name), "/[^a-z0-9]/", "")
 
