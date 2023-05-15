@@ -13,7 +13,7 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
 
 resource "aws_security_group" "control_plane" {
-    name = "${var.tags.Name}-ControlPlaneSecurityGroup"
+    name = "${var.tags.Name}-ControlPlane"
     description = "[${var.tags.Name}] Cluster communication with worker nodes"
     vpc_id = var.vpc.id
 

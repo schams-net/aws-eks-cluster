@@ -10,7 +10,8 @@
 # @TODO
 
 resource "aws_security_group" "rds" {
-    name = "${lower(var.tags.Name)}-rds-aurora"
+    #name = "${lower(var.tags.Name)}-rds-aurora"
+    name = "${var.tags.Name}-AuroraCluster"
     description = "${var.tags.Name} RDS Aurora cluster"
     vpc_id = var.vpc.id
     ingress {
