@@ -23,4 +23,6 @@ resource "aws_autoscaling_notification" "default" {
 
     # Amazon Simple Notification Service (SNS)
     topic_arn = var.sns_topic_autoscaling_notification.arn
+
+    depends_on = [ var.sns_topic_autoscaling_notification ]
 }
