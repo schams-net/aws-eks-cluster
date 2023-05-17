@@ -4,7 +4,7 @@
 data "template_file" "secrets_manager" {
     template = "${file("${path.module}/json/secrets-manager.tpl")}"
     vars = {
-        region = var.region
+        region = data.aws_region.current.name
         account = local.account_id
     }
 }

@@ -4,7 +4,7 @@
 data "template_file" "rds_database_access" {
     template = "${file("${path.module}/json/rds-database-access.tpl")}"
     vars = {
-        region = var.region
+        region = data.aws_region.current.name
         account = local.account_id
         resource = var.rds_aurora_instances[0].dbi_resource_id
         username = "dbuser"
