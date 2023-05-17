@@ -35,8 +35,16 @@ resource "aws_eks_cluster" "default" {
         # control plane.
         security_group_ids = [aws_security_group.control_plane.id]
 
+        # Whether the Amazon EKS private API server endpoint is enabled (default: false).
         endpoint_private_access = false
+
+        # Whether the Amazon EKS public API server endpoint is enabled (default: true).
         endpoint_public_access = true
+
+        # List of CIDR blocks that can access the Amazon EKS public API server endpoint when enabled.
+        # Terraform will only perform drift detection of its value when present in a configuration.
+        # Default: ["0.0.0.0/0"].
+        public_access_cidrs = ["0.0.0.0/0"]
     }
 
     kubernetes_network_config {
@@ -55,6 +63,12 @@ resource "aws_eks_cluster" "default" {
 
     lifecycle {
         ignore_changes = [tags, tags_all]
+    }
+
+    timeouts {
+        create = "20m"
+        update = "30m"
+        delete = "30m"
     }
 
 	tags = var.tags
