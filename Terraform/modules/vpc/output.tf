@@ -5,5 +5,8 @@ output "vpc" {
 }
 
 output "subnets" {
-    value = aws_subnet.subnets_public
+    value = {
+        public = aws_subnet.subnets_public
+        private = aws_subnet.subnets_private
+    }
 }

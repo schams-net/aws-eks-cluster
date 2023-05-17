@@ -15,7 +15,7 @@ resource "aws_nat_gateway" "default" {
     # "allocation_id" is required for a NAT Gateway with connectivity type "public".
     allocation_id = aws_eip.default[count.index].id
 
-    subnet_id = aws_subnet.subnets_private[count.index].id
+    subnet_id = aws_subnet.subnets_public[count.index].id
 
     # To ensure proper ordering, it is recommended to add an explicit dependency on the Internet
     # Gateway for the VPC.
