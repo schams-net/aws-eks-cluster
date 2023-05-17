@@ -33,6 +33,9 @@ resource "aws_eks_addon" "kube_proxy" {
 
     # Kubernetes version 1.25
     addon_version = "v1.25.6-eksbuild.1"
+
+    # Don't try to install the add-on until the EKS node group is available
+    depends_on = [ aws_eks_node_group.default ]
 }
 
 resource "aws_eks_addon" "coredns" {
@@ -44,6 +47,9 @@ resource "aws_eks_addon" "coredns" {
 
     # Kubernetes version 1.25
     addon_version = "v1.9.3-eksbuild.2"
+
+    # Don't try to install the add-on until the EKS node group is available
+    depends_on = [ aws_eks_node_group.default ]
 }
 
 resource "aws_eks_addon" "vpc_cni" {
@@ -55,4 +61,7 @@ resource "aws_eks_addon" "vpc_cni" {
 
     # Kubernetes version 1.25
     addon_version = "v1.12.2-eksbuild.1"
+
+    # Don't try to install the add-on until the EKS node group is available
+    depends_on = [ aws_eks_node_group.default ]
 }
