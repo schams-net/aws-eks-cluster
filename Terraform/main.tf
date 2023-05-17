@@ -45,3 +45,10 @@ module "aws_sns" {
     source = "./modules/sns"
     tags = var.tags
 }
+
+# Amazon CloudWatch
+module "aws_cloudwatch" {
+    source = "./modules/cloudwatch"
+    eks_cluster = module.aws_eks.cluster
+    tags = var.tags
+}

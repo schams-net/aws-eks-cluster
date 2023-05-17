@@ -56,6 +56,11 @@ resource "aws_eks_cluster" "default" {
         ip_family = "ipv4"
     }
 
+    # List of the desired control plane logging to enable.
+    # Valid options: "api", "audit", "authenticator", "controllerManager", "scheduler"
+    # See https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html
+    enabled_cluster_log_types = ["api", "audit"]
+
     # Ensure that IAM role permissions are created before and deleted after EKS cluster handling.
     # Otherwise, EKS will not be able to delete EKS managed EC2 infrastructure such as Security
 	# Groups.
