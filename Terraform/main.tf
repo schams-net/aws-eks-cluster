@@ -37,6 +37,7 @@ module "aws_eks" {
     eks_role_policies = module.aws_iam.eks_role_policies
     eks_node_group_role_policies = module.aws_iam.eks_node_group_role_policies
     sns_topic_autoscaling_notification = module.aws_sns.auto_scaling_notifications
+    cloudwatch_log_group = module.aws_cloudwatch.log_groups.eks_cluster
     tags = var.tags
 }
 
@@ -49,6 +50,5 @@ module "aws_sns" {
 # Amazon CloudWatch
 module "aws_cloudwatch" {
     source = "./modules/cloudwatch"
-    eks_cluster = module.aws_eks.cluster
     tags = var.tags
 }

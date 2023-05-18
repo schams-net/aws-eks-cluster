@@ -64,7 +64,10 @@ resource "aws_eks_cluster" "default" {
     # Ensure that IAM role permissions are created before and deleted after EKS cluster handling.
     # Otherwise, EKS will not be able to delete EKS managed EC2 infrastructure such as Security
 	# Groups.
-    depends_on = [var.eks_role_policies]
+    depends_on = [
+        var.eks_role_policies,
+        var.cloudwatch_log_group
+    ]
 
     lifecycle {
         ignore_changes = [tags, tags_all]
