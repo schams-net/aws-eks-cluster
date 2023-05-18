@@ -2,7 +2,7 @@
 
 # ...
 data "template_file" "rds_database_access" {
-    template = "${file("${path.module}/json/rds-database-access.tpl")}"
+    template = "${file("${path.module}/templates/rds-database-access.tpl")}"
     vars = {
         region = data.aws_region.current.name
         account = local.account_id

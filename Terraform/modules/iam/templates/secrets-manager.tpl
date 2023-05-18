@@ -4,7 +4,8 @@
         {
             "Effect": "Allow",
             "Action": [
-                "secretsmanager:GetSecretValue"
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret"
             ],
             "Resource": [
                 "arn:aws:secretsmanager:${region}:${account}:secret:*"

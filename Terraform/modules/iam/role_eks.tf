@@ -10,10 +10,10 @@
 # @TODO
 
 resource "aws_iam_role" "eks" {
-    name = "${var.tags.Name}RoleForAmazonEKS"
-    assume_role_policy = file("${path.module}/eks_assume_role.json")
+    name = "${var.tags.Name}-AmazonEKS"
+    assume_role_policy = file("${path.module}/json/assume_role_eks.json")
     tags = {
-        Name = "${var.tags.Name}RoleForAmazonEKS"
+        Name = "${var.tags.Name}-AmazonEKS"
         billing-id = var.tags.billing-id
     }
 }

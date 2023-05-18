@@ -21,3 +21,7 @@ output "eks_node_group_role_policies" {
         aws_iam_role_policy_attachment.amazon_ec2_container_registry_read_only
     ]
 }
+
+output "iam_policy_secrets_manager" {
+    value = aws_iam_policy.secrets_manager
+}
