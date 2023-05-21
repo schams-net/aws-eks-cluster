@@ -60,7 +60,7 @@ resource "aws_rds_cluster" "default" {
 
         # The maximum capacity for an Aurora DB cluster.
         # Valid capacity values: same as above.
-        max_capacity = 2.0
+        max_capacity = 1.0
     }
 
     backup_retention_period = 1
