@@ -9,19 +9,8 @@ data "template_file" "secrets_manager" {
     }
 }
 
-# Inline policy
-#resource "aws_iam_role_policy" "secrets_manager" {
-#    name = "secrets-manager"
-#    role = aws_iam_role.eks_node_group.id
-#    policy = data.template_file.secrets_manager.rendered
-#}
-
-# ------------------------------------------------------------------------------
-
 # IAM policy
 resource "aws_iam_policy" "secrets_manager" {
     name = "${var.tags.Name}-SecretsManager"
     policy = data.template_file.secrets_manager.rendered
 }
-
-# ------------------------------------------------------------------------------
