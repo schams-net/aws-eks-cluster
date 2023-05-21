@@ -10,6 +10,7 @@ module "aws_vpc" {
 module "aws_iam" {
     source = "./modules/iam"
     rds_aurora_instances = module.aws_rds_aurora.instances
+    eks_cluster = module.aws_eks.cluster
     tags = var.tags
 }
 
