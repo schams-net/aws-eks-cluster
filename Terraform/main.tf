@@ -9,13 +9,13 @@ module "aws_vpc" {
 # Amazon Identity and Access Management (IAM)
 module "aws_iam" {
     source = "./modules/iam"
-    rds_aurora_instances = module.aws_rds_cluster.rds_aurora_instances
+    rds_aurora_instances = module.aws_rds_aurora.instances
     tags = var.tags
 }
 
 # Amazon RDS Aurora Serverless (MySQL/PostgreSQL)
-module "aws_rds_cluster" {
-    source = "./modules/rds-aurora-cluster"
+module "aws_rds_aurora" {
+    source = "./modules/rds-aurora"
     vpc = module.aws_vpc.vpc
     subnets = module.aws_vpc.subnets.public
     tags = var.tags
@@ -24,7 +24,7 @@ module "aws_rds_cluster" {
 # AWS Secrets Manager
 module "aws_secrets_manager" {
     source = "./modules/secrets-manager"
-    rds_aurora_cluster = module.aws_rds_cluster.rds_aurora_cluster
+    rds_aurora_cluster = module.aws_rds_aurora.cluster
     tags = var.tags
 }
 
