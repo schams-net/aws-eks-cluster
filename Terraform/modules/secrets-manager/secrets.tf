@@ -11,7 +11,7 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret_version
 
 resource "aws_secretsmanager_secret" "rds_aurora_cluster_endpoint" {
-    name = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}-rds-aurora-cluster-endpoint"
+    name = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}_rds_aurora_cluster_endpoint"
     description = "[${var.tags.Name}] RDS Aurora cluster endpoint"
     recovery_window_in_days = 0
     #policy = 
