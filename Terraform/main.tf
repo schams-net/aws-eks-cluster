@@ -18,7 +18,7 @@ module "aws_iam" {
 module "aws_rds_aurora" {
     source = "./modules/rds-aurora"
     vpc = module.aws_vpc.vpc
-    subnets = module.aws_vpc.subnets.public
+    subnets = module.aws_vpc.subnets.private
     tags = var.tags
 }
 
