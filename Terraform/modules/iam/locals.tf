@@ -1,10 +1,5 @@
 # ...
 
-resource "random_integer" "rand" {
-    min = 10000
-    max = 99999
-}
-
 locals {
     # AWS account ID
     account_id = data.aws_caller_identity.current.account_id
