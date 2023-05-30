@@ -9,7 +9,7 @@ module "aws_vpc" {
 # Amazon Identity and Access Management (IAM)
 module "aws_iam" {
     source = "./modules/iam"
-    rds_aurora_instances = module.aws_rds_aurora.instances
+    rds_aurora_cluster = module.aws_rds_aurora.cluster
     eks_cluster = module.aws_eks.cluster
     tags = var.tags
 }

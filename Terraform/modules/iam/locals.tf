@@ -4,13 +4,13 @@ locals {
     # AWS account ID
     account_id = data.aws_caller_identity.current.account_id
 
-    # AWS Secrets Manager
+    # AWS RDS Aurora cluster (IAM authentication)
     rds_database_access = templatefile(
         "${path.module}/templates/rds_database_access.tftpl",
         {
             region = data.aws_region.current.name
             account = data.aws_caller_identity.current.account_id
-            resource = var.rds_aurora_instances[0].dbi_resource_id
+            resource = var.rds_aurora_cluster.cluster_resource_id
             username = "dbuser"
         }
     )
