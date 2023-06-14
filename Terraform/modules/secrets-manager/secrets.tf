@@ -22,3 +22,15 @@ resource "aws_secretsmanager_secret_version" "rds_aurora_cluster_endpoint" {
     secret_id = aws_secretsmanager_secret.rds_aurora_cluster_endpoint.id
     secret_string = local.rds_aurora_cluster_endpoint
 }
+
+resource "aws_secretsmanager_secret" "mq_broker_access_details" {
+    name = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}_mq_broker_access_details"
+    description = "[${var.tags.Name}] Access details of the Amazon MQ broker user"
+    recovery_window_in_days = 0
+    tags = var.tags
+}
+
+resource "aws_secretsmanager_secret_version" "mq_broker_access_details" {
+    secret_id = aws_secretsmanager_secret.mq_broker_access_details.id
+    secret_string = local.mq_broker_access_details
+}

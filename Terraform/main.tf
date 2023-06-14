@@ -34,6 +34,7 @@ module "aws_efs" {
 module "aws_secrets_manager" {
     source = "./modules/secrets-manager"
     rds_aurora_cluster = module.aws_rds_aurora.cluster
+    mq_broker_access_details = module.aws_mq.mq_broker_access_details
     tags = var.tags
 }
 
@@ -59,5 +60,13 @@ module "aws_sns" {
 # Amazon CloudWatch
 module "aws_cloudwatch" {
     source = "./modules/cloudwatch"
+    tags = var.tags
+}
+
+# Amazon MQ
+module "aws_mq" {
+    source = "./modules/mq"
+    vpc = module.aws_vpc.vpc
+    subnets = module.aws_vpc.subnets.private
     tags = var.tags
 }
