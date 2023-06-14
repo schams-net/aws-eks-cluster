@@ -22,14 +22,6 @@ module "aws_rds_aurora" {
     tags = var.tags
 }
 
-# Amazon Elastic File System (EFS)
-module "aws_efs" {
-    source = "./modules/efs"
-    vpc = module.aws_vpc.vpc
-    subnets = module.aws_vpc.subnets.private
-    tags = var.tags
-}
-
 # AWS Secrets Manager
 module "aws_secrets_manager" {
     source = "./modules/secrets-manager"
