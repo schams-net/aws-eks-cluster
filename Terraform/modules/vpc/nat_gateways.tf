@@ -28,7 +28,7 @@ resource "aws_nat_gateway" "default" {
 
 resource "aws_eip" "default" {
     count = var.subnet_count
-    vpc = true
+    domain = "vpc"
     tags = merge(var.tags, {
         Name = "[${var.tags.Name}] ${data.aws_availability_zones.available.names[count.index]}"
     })
