@@ -12,6 +12,7 @@ locals {
         {
             username = var.mq_broker_access_details.username
             password = var.mq_broker_access_details.password
+            endpoint = var.mq_broker_access_details.endpoint
         }
     )
 }
