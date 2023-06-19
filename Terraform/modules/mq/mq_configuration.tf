@@ -18,9 +18,4 @@ resource "aws_mq_configuration" "default" {
 
     # https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html
     data = file("${path.module}/configuration/default.xml")
-
-#    lifecycle {
-#        ignore_changes = [ data ]
-#    }
-
 }
