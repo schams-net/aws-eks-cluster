@@ -18,13 +18,13 @@ resource "aws_security_group" "mq" {
     vpc_id = var.vpc.id
 
     ingress {
-        from_port = 0
-        to_port = 65535
+        from_port = 5671
+        to_port = 5671
         protocol = "tcp"
         cidr_blocks = var.subnets[*].cidr_block
     }
 
     tags = merge(var.tags, {
-        Name = "[${var.tags.Name}] Elastic File System (EFS)"
+        Name = "[${var.tags.Name}] Amazon Message Queue (MQ)"
     })
 }
