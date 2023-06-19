@@ -62,3 +62,10 @@ module "aws_mq" {
     subnets = module.aws_vpc.subnets.private
     tags = var.tags
 }
+
+# Helm charts installer
+module "helm_charts" {
+    source = "./modules/helm"
+    eks_cluster = module.aws_eks.cluster
+    tags = var.tags
+}
