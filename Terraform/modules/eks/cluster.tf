@@ -19,7 +19,7 @@ resource "aws_eks_cluster" "default" {
 	# Kubernetes master version. If you do not specify a value, the latest available version at
 	# resource creation is used and no upgrades will occur except those automatically triggered by
 	# EKS.
-	version = "1.25"
+	version = "1.27"
 
     vpc_config {
 
