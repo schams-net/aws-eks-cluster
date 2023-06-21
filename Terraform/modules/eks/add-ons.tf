@@ -38,7 +38,7 @@ resource "aws_eks_addon" "kube_proxy" {
     #addon_version = "v1.26.2-minimal-eksbuild.1"
 
     # Kubernetes version 1.27
-    addon_version = "v1.27.1-minimal-eksbuild.1"
+    #addon_version = "v1.27.1-minimal-eksbuild.1"
 
     # Don't try to install the add-on until the EKS node group is available
     depends_on = [ aws_eks_node_group.default ]
