@@ -52,7 +52,13 @@ resource "aws_eks_addon" "coredns" {
     #addon_version = "v1.8.7-eksbuild.3"
 
     # Kubernetes version 1.25
-    addon_version = "v1.9.3-eksbuild.2"
+    #addon_version = "v1.9.3-eksbuild.2"
+
+    # Kubernetes version 1.26
+    #addon_version = "v1.9.3-eksbuild.3"
+
+    # Kubernetes version 1.27
+    addon_version = "v1.10.1-eksbuild.1"
 
     # Don't try to install the add-on until the EKS node group is available
     depends_on = [ aws_eks_node_group.default ]
