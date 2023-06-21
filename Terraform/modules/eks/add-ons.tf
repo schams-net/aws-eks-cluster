@@ -68,11 +68,8 @@ resource "aws_eks_addon" "vpc_cni" {
     cluster_name = aws_eks_cluster.default.name
     addon_name = "vpc-cni"
 
-    # Kubernetes version 1.24
-    #addon_version = "v1.11.4-eksbuild.1"
-
-    # Kubernetes version 1.25
-    addon_version = "v1.12.2-eksbuild.1"
+    # Kubernetes version 1.21, 1.22, 1.23, 1.24, 1.25, 1.26, 1.27
+    addon_version = "v1.13.0-eksbuild.1"
 
     # Don't try to install the add-on until the EKS node group is available
     depends_on = [ aws_eks_node_group.default ]
