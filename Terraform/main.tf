@@ -11,6 +11,7 @@ module "aws_iam" {
     source = "./modules/iam"
     rds_aurora_cluster = module.aws_rds_aurora.cluster
     eks_cluster = module.aws_eks.cluster
+    secrets = module.aws_secrets_manager.secrets
     tags = var.tags
 }
 

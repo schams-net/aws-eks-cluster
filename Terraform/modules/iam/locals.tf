@@ -19,8 +19,10 @@ locals {
     secrets_manager = templatefile(
         "${path.module}/templates/secrets_manager.tftpl",
         {
-            region = data.aws_region.current.name
-            account = local.account_id
+            resources = jsonencode([
+                var.secrets.rds_aurora_cluster_endpoint.arn,
+                var.secrets.mq_broker_access_details.arn
+            ])
         }
     )
 }

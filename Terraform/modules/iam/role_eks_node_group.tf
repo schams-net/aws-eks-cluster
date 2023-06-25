@@ -32,3 +32,10 @@ resource "aws_iam_role_policy_attachment" "amazon_ec2_container_registry_read_on
     policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
     role = aws_iam_role.eks_node_group.name
 }
+
+# inline policy
+resource "aws_iam_role_policy" "amazon_secrets_manager" {
+    name = "secrets-manager"
+    role = aws_iam_role.eks_node_group.name
+    policy = local.secrets_manager
+}
