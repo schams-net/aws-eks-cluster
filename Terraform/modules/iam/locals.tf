@@ -25,4 +25,13 @@ locals {
             ])
         }
     )
+
+    # AWS S3 buckets
+    s3_buckets = templatefile(
+        "${path.module}/templates/s3_buckets.tftpl",
+        {
+            s3_bucket_media_arn = var.s3_buckets.media.arn,
+            s3_bucket_ugc_arn = var.s3_buckets.ugc.arn
+        }
+    )
 }

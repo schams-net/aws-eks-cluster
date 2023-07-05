@@ -39,3 +39,10 @@ resource "aws_iam_role_policy" "amazon_secrets_manager" {
     role = aws_iam_role.eks_node_group.name
     policy = local.secrets_manager
 }
+
+# inline policy
+resource "aws_iam_role_policy" "s3_buckets" {
+    name = "s3-buckets"
+    role = aws_iam_role.eks_node_group.name
+    policy = local.s3_buckets
+}
