@@ -4,9 +4,9 @@ resource "aws_cloudfront_distribution" "default" {
     comment = "[${var.tags.Name}] CloudFront distribution"
     is_ipv6_enabled = true
     price_class = "PriceClass_All"
-    retain_on_delete = true
     http_version = "http2"
     wait_for_deployment = false
+    retain_on_delete = false
     enabled = true
 
     #aliases = ["example.com"]
