@@ -70,3 +70,22 @@ module "helm_charts" {
     eks_cluster = module.aws_eks.cluster
     tags = var.tags
 }
+
+# Amazon CloudFront
+module "aws_cloudfront" {
+    source = "./modules/cloudfront"
+    origins = {
+        "elb_api" = "api.example.com"
+        "elb_default" = "default.example.com"
+        "s3_media" = module.aws_s3.buckets.media.bucket_regional_domain_name
+    }
+    tags = var.tags
+}
+
+# Amazon S3
+module "aws_s3" {
+    source = "./modules/s3"
+    cloudfront_distribution = module.aws_cloudfront.distribution
+    random_identifier = random_id.identifier
+    tags = var.tags
+}
