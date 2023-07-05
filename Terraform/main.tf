@@ -29,6 +29,7 @@ module "aws_secrets_manager" {
     source = "./modules/secrets-manager"
     rds_aurora_cluster = module.aws_rds_aurora.cluster
     mq_broker_access_details = module.aws_mq.mq_broker_access_details
+    s3_buckets = module.aws_s3.buckets
     tags = var.tags
 }
 

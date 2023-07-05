@@ -34,3 +34,15 @@ resource "aws_secretsmanager_secret_version" "mq_broker_access_details" {
     secret_id = aws_secretsmanager_secret.mq_broker_access_details.id
     secret_string = local.mq_broker_access_details
 }
+
+resource "aws_secretsmanager_secret" "s3_buckets" {
+    name = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}_s3_buckets"
+    description = "[${var.tags.Name}] S3 bucket names"
+    recovery_window_in_days = 0
+    tags = var.tags
+}
+
+resource "aws_secretsmanager_secret_version" "s3_buckets" {
+    secret_id = aws_secretsmanager_secret.s3_buckets.id
+    secret_string = local.s3_buckets
+}

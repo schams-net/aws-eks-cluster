@@ -15,4 +15,11 @@ locals {
             endpoint = var.mq_broker_access_details.endpoint
         }
     )
+    s3_buckets = templatefile(
+        "${path.module}/templates/s3_buckets.tftpl",
+        {
+            s3_bucket_media = var.s3_buckets.media.id
+            s3_bucket_ugc = var.s3_buckets.ugc.id
+        }
+    )
 }
