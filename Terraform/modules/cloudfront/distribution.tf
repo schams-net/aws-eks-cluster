@@ -20,6 +20,10 @@ resource "aws_cloudfront_distribution" "default" {
     origin {
         domain_name = var.origins.elb_api
         origin_id = local.origin_id_elb_api
+        custom_header {
+            name = "CloudFront-Token"
+            value = random_id.hash.hex
+        }
         custom_origin_config {
             http_port = "80"
             https_port = "443"
@@ -33,6 +37,10 @@ resource "aws_cloudfront_distribution" "default" {
     origin {
         domain_name = var.origins.elb_default
         origin_id = local.origin_id_elb_default
+        custom_header {
+            name = "CloudFront-Token"
+            value = random_id.hash.hex
+        }
         custom_origin_config {
             http_port = "80"
             https_port = "443"
