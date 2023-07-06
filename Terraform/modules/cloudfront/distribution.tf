@@ -79,6 +79,10 @@ resource "aws_cloudfront_distribution" "default" {
         smooth_streaming = false
         cache_policy_id = data.aws_cloudfront_cache_policy.managed_caching_disabled.id
         #origin_request_policy_id = data.aws_cloudfront_origin_request_policy.managed_all_viewer_and_cloudfront_headers.id
+        function_association {
+            event_type = "viewer-request"
+            function_arn = aws_cloudfront_function.add_index_html.arn
+        }
     }
 
     viewer_certificate {
