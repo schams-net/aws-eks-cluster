@@ -2,6 +2,12 @@
 
 resource "aws_s3_bucket" "media" {
     bucket = "${lower(var.tags.Name)}.media.${var.random_identifier.hex}"
+
+    # force_destroy: Indicates that all objects (including any locked objects)
+    # should be deleted from the bucket when the bucket is destroyed. Otherwise
+    # a "terraform destroy" can fail (if the bucket still contains objects).
+    #force_destroy = true
+
     tags = var.tags
 }
 
