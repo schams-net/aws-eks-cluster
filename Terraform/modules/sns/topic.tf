@@ -13,3 +13,8 @@ resource "aws_sns_topic" "auto_scaling_notifications" {
     name = "${var.tags.Name}-auto-scaling-notifications"
     tags = var.tags
 }
+
+resource "aws_sns_topic" "redis_notifications" {
+    name = "${var.tags.Name}-redis-notifications"
+    tags = var.tags
+}

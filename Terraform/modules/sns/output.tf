@@ -1,5 +1,8 @@
 # Output variables
 
-output "auto_scaling_notifications" {
-    value = aws_sns_topic.auto_scaling_notifications
+output "topics" {
+    value = {
+        auto_scaling_notifications = aws_sns_topic.auto_scaling_notifications
+        redis_notifications = aws_sns_topic.redis_notifications
+    }
 }

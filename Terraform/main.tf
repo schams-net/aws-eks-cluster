@@ -41,8 +41,8 @@ module "aws_eks" {
     iam_roles = module.aws_iam.roles
     eks_role_policies = module.aws_iam.eks_role_policies
     eks_node_group_role_policies = module.aws_iam.eks_node_group_role_policies
-    sns_topic_autoscaling_notification = module.aws_sns.auto_scaling_notifications
-    cloudwatch_log_group = module.aws_cloudwatch.log_groups.eks_cluster
+    sns_topics = module.aws_sns.topics
+    cloudwatch_log_groups = module.aws_cloudwatch.log_groups
     tags = var.tags
 }
 
@@ -63,6 +63,16 @@ module "aws_mq" {
     source = "./modules/mq"
     vpc = module.aws_vpc.vpc
     subnets = module.aws_vpc.subnets.private
+    tags = var.tags
+}
+
+# Amazon ElastiCache for Redis
+module "aws_elasticache" {
+    source = "./modules/elasticache"
+    vpc = module.aws_vpc.vpc
+    subnets = module.aws_vpc.subnets.private
+    cloudwatch_log_groups = module.aws_cloudwatch.log_groups
+    sns_topics = module.aws_sns.topics
     tags = var.tags
 }
 

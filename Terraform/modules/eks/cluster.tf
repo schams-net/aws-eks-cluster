@@ -66,7 +66,7 @@ resource "aws_eks_cluster" "default" {
 	# Groups.
     depends_on = [
         var.eks_role_policies,
-        var.cloudwatch_log_group
+        #var.cloudwatch_log_groups.eks_cluster
     ]
 
     lifecycle {
