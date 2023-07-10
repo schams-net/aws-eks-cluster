@@ -22,4 +22,10 @@ locals {
             s3_bucket_ugc = var.s3_buckets.ugc.id
         }
     )
+    redis_cluster_endpoint = templatefile(
+        "${path.module}/templates/redis_cluster_endpoint.tftpl",
+        {
+            cluster_endpoint = var.redis_cluster.cache_nodes[0].address
+        }
+    )
 }

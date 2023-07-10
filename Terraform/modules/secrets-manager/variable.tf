@@ -11,6 +11,9 @@ variable "s3_buckets" {
     type = map
 }
 
+variable "redis_cluster" {
+}
+
 variable "tags" {
     type = map
 }

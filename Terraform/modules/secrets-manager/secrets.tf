@@ -46,3 +46,15 @@ resource "aws_secretsmanager_secret_version" "s3_buckets" {
     secret_id = aws_secretsmanager_secret.s3_buckets.id
     secret_string = local.s3_buckets
 }
+
+resource "aws_secretsmanager_secret" "redis_cluster_endpoint" {
+    name = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}_redis_cluster_endpoint"
+    description = "[${var.tags.Name}] ElastiCache for Redis cluster endpoint"
+    recovery_window_in_days = 0
+    tags = var.tags
+}
+
+resource "aws_secretsmanager_secret_version" "redis_cluster_endpoint" {
+    secret_id = aws_secretsmanager_secret.redis_cluster_endpoint.id
+    secret_string = local.redis_cluster_endpoint
+}

@@ -23,6 +23,9 @@ resource "aws_elasticache_cluster" "redis" {
     # For Redis, this value must be 1.
     num_cache_nodes = 1
 
+    # Only one can be specified: "engine" or "replication_group_id"
+    #replication_group_id = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}-redis"
+
     parameter_group_name = "default.redis7"
     auto_minor_version_upgrade = true
 

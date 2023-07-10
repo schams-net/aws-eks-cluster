@@ -30,6 +30,7 @@ module "aws_secrets_manager" {
     rds_aurora_cluster = module.aws_rds_aurora.cluster
     mq_broker_access_details = module.aws_mq.mq_broker_access_details
     s3_buckets = module.aws_s3.buckets
+    redis_cluster = module.aws_elasticache.redis_cluster
     tags = var.tags
 }
 
