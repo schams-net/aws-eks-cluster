@@ -21,7 +21,9 @@ locals {
         {
             resources = jsonencode([
                 var.secrets.rds_aurora_cluster_endpoint.arn,
-                var.secrets.mq_broker_access_details.arn
+                var.secrets.mq_broker_access_details.arn,
+                var.secrets.s3_buckets.arn,
+                var.secrets.redis_cluster_endpoint.arn
             ])
         }
     )
