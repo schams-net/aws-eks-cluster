@@ -1,4 +1,14 @@
-# CloudFront functions
+# Amazon CloudFront Functions
+#
+# Description:
+# Provides a CloudFront Function resource. With CloudFront Functions in Amazon CloudFront, you can
+# write lightweight functions in JavaScript for high-scale, latency-sensitive CDN customizations.
+#
+# AWS Documentation:
+# https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-functions.html
+#
+# Terrafom Documentation:
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_function
 
 resource "aws_cloudfront_function" "add_index_html" {
     name = "${lower(var.tags.Name)}-add-index-html"

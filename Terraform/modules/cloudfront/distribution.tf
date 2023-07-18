@@ -1,4 +1,19 @@
-# ...
+# Amazon CloudFront Distribution
+#
+# Description:
+# Amazon CloudFront is a service that speeds up the distribution of your static and dynamic web
+# content to your users. CloudFront delivers your content through a worldwide network of data centers
+# called edge locations. When a user requests content that you're serving with CloudFront, the request
+# is routed to the edge location that provides the lowest latency (time delay), so that content is
+# delivered with the best possible performance.
+# If a user requests content that is not in that edge location, CloudFront retrieves it from an
+# origin that you've defined, for example a web application.
+#
+# AWS Documentation:
+# https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html
+#
+# Terrafom Documentation:
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution
 
 resource "aws_cloudfront_distribution" "default" {
     comment = "[${var.tags.Name}] CloudFront distribution"
