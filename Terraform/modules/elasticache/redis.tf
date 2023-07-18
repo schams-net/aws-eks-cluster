@@ -1,13 +1,15 @@
 # Amazon ElastiCache for Redis
 #
 # Description:
-# ...
+# Redis compatible in-memory data store that can be used to power real-time applications with
+# sub-millisecond latency. Amazon ElastiCache for Redis is fully managed by AWS, scalable and
+# highly available.
 #
 # AWS Documentation:
-# ...
+# https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html
 #
 # Terrafom Documentation:
-# ...
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_cluster
 
 resource "aws_elasticache_cluster" "redis" {
     cluster_id = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}-redis"

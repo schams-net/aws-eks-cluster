@@ -1,13 +1,18 @@
-# VPC Security Group
+# Security Group
 #
 # Description:
 # Security groups control the traffic that is allowed to reach and leave the resources that it is
-# associated. The Security Group below is the default security group of the VPC. You can create
-# additional security groups for each VPC. You can associate a security group only with resources in
-# the VPC for which it is created.
+# associated.
+#
+# Note: Amazon ElastiCache security groups are only applicable to clusters that are not running in
+# an Amazon Virtual Private Cloud environment (VPC). If you are running in an Amazon Virtual Private
+# Cloud, Security Groups is not available in the console navigation pane. If you are running your
+# ElastiCache nodes in an Amazon VPC, you control access to your clusters with Amazon VPC security
+# groups, which are different from ElastiCache security groups. For more information about using
+# ElastiCache in an Amazon VPC, see Amazon VPCs and ElastiCache security.
 #
 # AWS Documentation:
-# https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html
+# See AWS documentation "Amazon ElastiCache for Redis".
 #
 # Terraform Documentation:
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
