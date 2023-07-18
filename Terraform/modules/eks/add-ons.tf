@@ -19,7 +19,7 @@
 # https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
 #
 # AWS Documentation:
-# @TODO
+# https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html
 #
 # Terrafom Documentation:
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon

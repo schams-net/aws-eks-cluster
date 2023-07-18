@@ -1,10 +1,10 @@
 # EC2 Launch Template
 #
 # Description:
-# ...
+# EC2 launch templates can be used to create auto-scaling groups.
 #
 # AWS Documentation:
-# ...
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html
 #
 # Terraform Documentation:
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
