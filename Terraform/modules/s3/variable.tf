@@ -1,4 +1,4 @@
-# ...
+# Input variables
 
 variable "cloudfront_distribution" {
 }

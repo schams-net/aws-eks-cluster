@@ -1,4 +1,21 @@
-# ...
+# Amazon Simple Storage Service (Amazon S3)
+#
+# Description:
+# Amazon S3 is an object storage service that offers industry-leading scalability, data availability,
+# security, and performance. The service provides management features so that you can optimize,
+# organize, and configure access to your data to meet your specific business, organizational, and
+# compliance requirements.
+#
+# The S3 bucket "media" stores static assets. These objects are encrypted at rest by AWS' server-side
+# encryption feature.
+#
+# AWS Documentation:
+# https://docs.aws.amazon.com/AmazonS3/latest/userguide//Welcome.html
+# https://docs.aws.amazon.com/AmazonS3/latest/userguide//serv-side-encryption.html
+#
+# Terrafom Documentation:
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_server_side_encryption_configuration
 
 resource "aws_s3_bucket" "media" {
     bucket = "${lower(var.tags.Name)}.media.${var.random_identifier.hex}"
