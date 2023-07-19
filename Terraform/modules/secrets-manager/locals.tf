@@ -1,4 +1,11 @@
-# ...
+# Terraform Local Values
+#
+# Description:
+# A local value assigns a name to an expression, so you can use the name multiple times within a
+# module instead of repeating the expression.
+#
+# Terrafom Documentation:
+# https://developer.hashicorp.com/terraform/language/values/locals
 
 locals {
     rds_aurora_access_details = templatefile(

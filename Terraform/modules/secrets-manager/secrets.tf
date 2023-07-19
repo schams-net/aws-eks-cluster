@@ -1,7 +1,9 @@
 # AWS Secrets Manager
 #
 # Description:
-# ...
+# The AWS Secrets Manager is a secrets management service that helps you protect access to your
+# applications, services, and IT resources. Secrets Manager lets you store a JSON document which
+# allows you to manage any text blurb that is 64 KB or smaller. The data is stored encrypted at rest.
 #
 # AWS Documentation:
 # https://docs.aws.amazon.com/secretsmanager/latest/userguide/
@@ -14,7 +16,6 @@ resource "aws_secretsmanager_secret" "rds_aurora_access_details" {
     name = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}_rds_aurora_access_details"
     description = "[${var.tags.Name}] RDS Aurora cluster endpoint"
     recovery_window_in_days = 0
-    #policy = 
     tags = var.tags
 }
 
