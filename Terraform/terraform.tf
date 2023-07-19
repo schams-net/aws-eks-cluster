@@ -12,14 +12,22 @@
 # This is a logical provider, which works entirely within Terraform logic and does not interact with
 # any other services.
 #
-# @TODO: "hashicorp/helm"
-# @TODO: "hashicorp/kubernetes"
-# @TODO: "hashicorp/kubectl"
+# The "hashicorp/helm" provider is used to deploy software packages in Kubernetes. "Helm" is a package
+# manager for Kubernetes.
+#
+# The "hashicorp/kubernetes" provider is used to interact with the resources supported by Kubernetes.
+#
+# The "gavinbunney/kubectl" provider is used to manage Kubernetes resources in Terraform. The core
+# of this provider is the kubectl_manifest resource, allowing free-form yaml to be processed and
+# applied against Kubernetes. This yaml object is then tracked and handles creation, updates and
+# deleted seamlessly - including drift detection.
 #
 # Terrafom Documentation:
 # https://registry.terraform.io/providers/hashicorp/aws/latest
 # https://registry.terraform.io/providers/hashicorp/random/latest
-# @TODO: add links
+# https://registry.terraform.io/providers/hashicorp/helm/latest/docs
+# https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs
+# https://registry.terraform.io/providers/gavinbunney/kubectl/latest
 
 terraform {
     required_providers {
@@ -33,17 +41,14 @@ terraform {
         }
         helm = {
             source = "hashicorp/helm"
-            #version = "2.10.1"
             version = "~> 2.0"
         }
         kubernetes = {
             source = "hashicorp/kubernetes"
-            #version = "2.21.1"
             version = "~> 2.0"
         }
         kubectl = {
             source = "gavinbunney/kubectl"
-            #version = "1.14.0"
             version = "~> 1.0"
         }
     }
