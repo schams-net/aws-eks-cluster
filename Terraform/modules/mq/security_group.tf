@@ -1,13 +1,12 @@
-# VPC Security Group
+# Security Group
 #
 # Description:
 # Security groups control the traffic that is allowed to reach and leave the resources that it is
-# associated. The Security Group below is the default security group of the VPC. You can create
-# additional security groups for each VPC. You can associate a security group only with resources in
-# the VPC for which it is created.
+# associated.
 #
 # AWS Documentation:
-# https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html
+# See AWS documentation "Amazon MQ", in particular:
+# https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/using-amazon-mq-securely.html#amazon-mq-vpc-security-groups
 #
 # Terraform Documentation:
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group

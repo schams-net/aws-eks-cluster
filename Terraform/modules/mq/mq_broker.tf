@@ -1,13 +1,17 @@
-# AWS Secrets Manager
+# Amazon MQ
 #
 # Description:
-# ...
+# Amazon MQ is a managed message broker service that allows software applications and components to
+# communicate using formal messaging protocols. Currently, Amazon MQ supports Apache ActiveMQ and
+# RabbitMQ engine types. This Terraform resource below configures an "ActiveMQ" broker. The message
+# broker service provides compatibility with many popular message brokers and APIs and protocols such
+# as AMQP 0-9-1, AMQP 1.0, MQTT, OpenWire, and STOMP.
 #
 # AWS Documentation:
-# ...
+# https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html
 #
 # Terrafom Documentation:
-# ...
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker
 
 resource "aws_mq_broker" "default" {
     broker_name = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}-mq-broker"
