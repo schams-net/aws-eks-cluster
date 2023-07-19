@@ -8,7 +8,7 @@
 # https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html
 #
 # Terraform Documentation:
-# @TODO
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table
 
 # route table for public subnets
 resource "aws_route_table" "public" {

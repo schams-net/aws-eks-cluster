@@ -1,13 +1,16 @@
-# NAT Gateway
+# NAT Gateway and Elastic IPs (EIP)
 #
 # Description:
-# @TODO
+# A NAT gateway is a Network Address Translation (NAT) service. You can use a NAT gateway so that
+# EC2 instances in a private subnet can connect to services outside your VPC but external services
+# cannot initiate a connection with those instances.
 #
 # AWS Documentation:
-# @TODO
+# https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html
 #
 # Terrafom Documentation:
-# @TODO
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/nat_gateway
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip
 
 resource "aws_nat_gateway" "default" {
     count = var.subnet_count

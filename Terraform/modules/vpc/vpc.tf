@@ -7,7 +7,7 @@
 # https://docs.aws.amazon.com/vpc/latest/userguide/configure-your-vpc.html
 #
 # Terraform Documentation:
-# @TODO
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
 
 resource "aws_vpc" "default" {
     cidr_block = var.cidr_block

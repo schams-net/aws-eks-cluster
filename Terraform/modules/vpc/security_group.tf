@@ -10,7 +10,7 @@
 # https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html
 #
 # Terraform Documentation:
-# @TODO
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/default_security_group
 
 resource "aws_default_security_group" "default_vpc" {
     vpc_id = aws_vpc.default.id
