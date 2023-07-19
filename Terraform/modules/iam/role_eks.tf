@@ -1,13 +1,16 @@
-# @TODO
+# AWS IAM Role "Amazon EKS Node Group"
 #
 # Description:
-# @TODO
+# The resource provides an IAM role for the Kubernetes cluster. AWS-managed IAM policies are attached
+# to the role.
 #
 # AWS Documentation:
-# @TODO
+# https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html
+# https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html
 #
 # Terrafom Documentation:
-# @TODO
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment
 
 resource "aws_iam_role" "eks" {
     name = "${var.tags.Name}-AmazonEKS"
@@ -18,7 +21,6 @@ resource "aws_iam_role" "eks" {
     }
 }
 
-# ...
 resource "aws_iam_role_policy_attachment" "amazon_eks_cluster_policy" {
     policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
     role = aws_iam_role.eks.name

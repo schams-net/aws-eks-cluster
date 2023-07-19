@@ -1,4 +1,15 @@
-# ...
+# IAM Role Inline Policy
+#
+# Description:
+# Resource provides an IAM role inline policy.
+#
+# AWS Documentation:
+# https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html
+# https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html
+#
+# Terrafom Documentation:
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy
+# https://developer.hashicorp.com/terraform/tutorials/aws/aws-iam-policy
 
 # Inline policy
 resource "aws_iam_role_policy" "rds_database_access" {

@@ -1,4 +1,16 @@
-# ...
+# Amazon IAM Policy
+#
+# Description:
+# You manage access in AWS by creating policies and attaching them to IAM identities (users, groups
+# of users, or roles) or AWS resources. A policy is an object in AWS that, when associated with an
+# identity or resource, defines their permissions.
+#
+# AWS Documentation:
+# https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html
+#
+# Terrafom Documentation:
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment
 
 # Policy for the Amazon Load Balancer
 resource "aws_iam_policy" "aws_load_balancer" {

@@ -1,13 +1,19 @@
-# @TODO
+# AWS IAM Role "Amazon EKS Node Group"
 #
 # Description:
-# @TODO
+# The resource provides an IAM role for the Kubernetes cluster node group (EC2 instances and the
+# applications running as pods on the instances). Several IAM policies managed by AWS are attached
+# to the role, plus some custom policies allowing the application to access services such as the
+# Secrets Manager and S3 buckets.
 #
 # AWS Documentation:
-# @TODO
+# https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html
+# https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html
 #
 # Terrafom Documentation:
-# @TODO
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy
 
 resource "aws_iam_role" "eks_node_group" {
     name = "${var.tags.Name}-AmazonEKS-NodeGroup"
