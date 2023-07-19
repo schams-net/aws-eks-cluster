@@ -1,4 +1,4 @@
-# Amazon RDS Aurora Serverless (MySQL)
+# Amazon RDS Aurora Serverless (MySQL or PostgreSQL)
 #
 # Description:
 # Amazon Aurora Serverless is an on-demand, autoscaling configuration for Amazon Aurora.

@@ -1,13 +1,15 @@
-# Amazon RDS Aurora Serverless (MySQL)
+# Security Group
 #
 # Description:
-# @TODO
+# Security groups control the traffic that is allowed to reach and leave the resources that it is
+# associated.
 #
 # AWS Documentation:
-# @TODO
+# See AWS documentation "Amazon RDS Aurora", in particular:
+# https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Overview.RDSSecurityGroups.html
 #
 # Terraform Documentation:
-# @TODO
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
 
 resource "aws_security_group" "rds" {
     #name = "${lower(var.tags.Name)}-rds-aurora"

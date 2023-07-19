@@ -1,4 +1,4 @@
-# Amazon RDS Aurora Serverless (MySQL)
+# Amazon RDS Aurora Serverless (MySQL or PostgreSQL)
 #
 # Description:
 # Amazon Aurora Serverless is an on-demand, autoscaling configuration for Amazon Aurora.
@@ -14,7 +14,10 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
 
 resource "aws_rds_cluster_instance" "serverless_db01a" {
-    # @TODO
+
+    # Hint: Use the meta-argument "count" and the expression "count.index" to deploy a DB instance
+    # in every available subnet across all availability zones (read/write and replicas), depending
+    # on the configured number of subnets.
     #count = ...
 
     identifier = "aurora-serverless-${data.aws_availability_zones.available.names[0]}"
