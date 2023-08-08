@@ -25,6 +25,7 @@ resource "aws_launch_template" "default" {
         ebs {
             volume_type = "gp2"
             volume_size = 16
+            encrypted = true
         }
     }
 
