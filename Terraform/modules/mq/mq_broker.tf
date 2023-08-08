@@ -21,7 +21,7 @@ resource "aws_mq_broker" "default" {
     engine_version = "5.17.2"
 
     host_instance_type = "mq.t2.micro"
-    apply_immediately = false
+    apply_immediately = true
 
     # The deployment mode of the broker: SINGLE_INSTANCE or ACTIVE_STANDBY_MULTI_AZ
     deployment_mode = "SINGLE_INSTANCE"
