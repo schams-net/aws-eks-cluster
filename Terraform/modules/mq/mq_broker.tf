@@ -47,6 +47,15 @@ resource "aws_mq_broker" "default" {
         console_access = false
     }
 
+    logs {
+        # Enables audit logging. Auditing is only possible for the engine_type "ActiveMQ".
+        # User management action made using JMX or the ActiveMQ Web Console is logged.
+        audit = "true"
+
+        # Enables general logging via CloudWatch.
+        general = true
+    }
+
     tags = var.tags
 }
 
