@@ -88,8 +88,7 @@ module "helm_charts" {
 module "aws_cloudfront" {
     source = "./modules/cloudfront"
     origins = {
-        "elb_api" = "api.example.com"
-        "elb_default" = "default.example.com"
+        "load_balancer" = "default.example.com"
         "s3_media" = module.aws_s3.buckets.media.bucket_regional_domain_name
     }
     tags = var.tags

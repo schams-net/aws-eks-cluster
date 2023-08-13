@@ -33,25 +33,8 @@ resource "aws_cloudfront_distribution" "default" {
     }
 
     origin {
-        domain_name = var.origins.elb_api
-        origin_id = local.origin_id_elb_api
-        custom_header {
-            name = "CloudFront-Token"
-            value = random_id.hash.hex
-        }
-        custom_origin_config {
-            http_port = "80"
-            https_port = "443"
-            origin_keepalive_timeout = 5
-            origin_protocol_policy = "http-only"
-            origin_ssl_protocols = ["TLSv1.2"]
-            origin_read_timeout = 30
-        }
-    }
-
-    origin {
-        domain_name = var.origins.elb_default
-        origin_id = local.origin_id_elb_default
+        domain_name = var.origins.load_balancer
+        origin_id = local.origin_id_load_balancer
         custom_header {
             name = "CloudFront-Token"
             value = random_id.hash.hex
@@ -69,22 +52,9 @@ resource "aws_cloudfront_distribution" "default" {
     default_cache_behavior {
         allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
         cached_methods = ["GET", "HEAD"]
-        target_origin_id = local.origin_id_elb_default
+        target_origin_id = local.origin_id_load_balancer
         viewer_protocol_policy = "redirect-to-https"
         #viewer_protocol_policy = "allow-all"
-        compress = true
-        smooth_streaming = false
-        cache_policy_id = data.aws_cloudfront_cache_policy.managed_caching_disabled.id
-        origin_request_policy_id = data.aws_cloudfront_origin_request_policy.managed_all_viewer_and_cloudfront_headers.id
-    }
-
-    # Cache behavior with precedence 2
-    ordered_cache_behavior {
-        path_pattern     = "/api/*"
-        allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
-        cached_methods = ["GET", "HEAD"]
-        target_origin_id = local.origin_id_elb_api
-        viewer_protocol_policy = "redirect-to-https"
         compress = true
         smooth_streaming = false
         cache_policy_id = data.aws_cloudfront_cache_policy.managed_caching_disabled.id
