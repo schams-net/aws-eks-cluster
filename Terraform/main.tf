@@ -101,3 +101,11 @@ module "aws_s3" {
     random_identifier = random_id.identifier
     tags = var.tags
 }
+
+# Amazon Simple Email Service (SES)
+module "aws_ses" {
+    source = "./modules/ses"
+    sns_topics = module.aws_sns.topics
+    #random_identifier = random_id.identifier
+    tags = var.tags
+}

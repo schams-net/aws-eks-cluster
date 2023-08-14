@@ -18,3 +18,8 @@ resource "aws_sns_topic" "redis_notifications" {
     name = "${var.tags.Name}-redis-notifications"
     tags = var.tags
 }
+
+resource "aws_sns_topic" "ses_notifications" {
+    name = "${var.tags.Name}-ses-notifications"
+    tags = var.tags
+}
