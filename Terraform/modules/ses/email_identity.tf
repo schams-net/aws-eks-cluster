@@ -25,7 +25,7 @@ resource "aws_sesv2_email_identity" "default" {
 
 resource "aws_sesv2_email_identity_feedback_attributes" "example" {
     email_identity = aws_sesv2_email_identity.default.email_identity
-    email_forwarding_enabled = true
+    email_forwarding_enabled = false
 }
 
 resource "aws_ses_identity_notification_topic" "bounce" {
