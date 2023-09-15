@@ -52,3 +52,10 @@ resource "aws_iam_role_policy" "s3_buckets" {
     role = aws_iam_role.eks_node_group.name
     policy = local.s3_buckets
 }
+
+# inline policy
+resource "aws_iam_role_policy" "simple_email_service" {
+    name = "simple-email-service"
+    role = aws_iam_role.eks_node_group.name
+    policy = local.simple_email_service
+}

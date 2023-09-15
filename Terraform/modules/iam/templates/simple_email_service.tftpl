@@ -1,0 +1,16 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ses:SendEmail"
+            ],
+            "Resource": [
+				"arn:aws:ses:*:${account}:configuration-set/*",
+				"arn:aws:ses:*:${account}:template/*",
+				"arn:aws:ses:*:${account}:identity/*"
+            ]
+        }
+    ]
+}

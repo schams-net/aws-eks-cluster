@@ -43,4 +43,12 @@ locals {
             s3_bucket_ugc_arn = var.s3_buckets.ugc.arn
         }
     )
+
+    # AWS Simple Email Service
+    simple_email_service = templatefile(
+        "${path.module}/templates/simple_email_service.tftpl",
+        {
+            account = data.aws_caller_identity.current.account_id
+        }
+    )
 }
