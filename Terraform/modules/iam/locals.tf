@@ -51,4 +51,12 @@ locals {
             account = data.aws_caller_identity.current.account_id
         }
     )
+
+    # AWS S3 "media" bucket
+    user_s3_media_bucket = templatefile(
+        "${path.module}/templates/user_s3_media_bucket.tftpl",
+        {
+            s3_bucket_media_arn = var.s3_buckets.media.arn
+        }
+    )
 }

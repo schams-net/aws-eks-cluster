@@ -21,3 +21,11 @@ output "eks_node_group_role_policies" {
         aws_iam_role_policy_attachment.amazon_ec2_container_registry_read_only
     ]
 }
+
+output "iam_user_credentials" {
+    value = {
+        username = aws_iam_user.user_s3_media_bucket.name
+        access_key_id = aws_iam_access_key.user_s3_media_bucket.id
+        secret_access_key = aws_iam_access_key.user_s3_media_bucket.secret
+    }
+}
