@@ -18,7 +18,7 @@ resource "aws_mq_broker" "default" {
 
     engine_type = "ActiveMQ"
     # https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/activemq-version-management.html
-    engine_version = "5.17.2"
+    engine_version = "5.17.6"
     auto_minor_version_upgrade = true
 
     host_instance_type = "mq.t2.micro"

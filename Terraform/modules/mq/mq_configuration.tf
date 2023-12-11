@@ -14,7 +14,7 @@ resource "aws_mq_configuration" "default" {
     description = "[${var.tags.Name}] configuration for the ActiveMQ broker"
 
     engine_type = "ActiveMQ"
-    engine_version = "5.17.2"
+    engine_version = "5.17.6"
 
     # https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html
     data = file("${path.module}/configuration/default.xml")
