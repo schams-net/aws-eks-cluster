@@ -16,6 +16,6 @@ variable "tags" {
     type = map
     default = {
         "Name"  = "KubernetesCluster"
-        "billing-id" = "k8cluster"
+        "billing-id" = "anomaly"
     }
 }
