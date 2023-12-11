@@ -18,9 +18,9 @@ resource "aws_rds_cluster_instance" "serverless_db01a" {
     # Hint: Use the meta-argument "count" and the expression "count.index" to deploy a DB instance
     # in every available subnet across all availability zones (read/write and replicas), depending
     # on the configured number of subnets.
-    #count = ...
+    count = 0
 
-    identifier = "aurora-serverless-${data.aws_availability_zones.available.names[0]}"
+    identifier = "aurora-serverless-${data.aws_availability_zones.available.names[count.index]}"
     cluster_identifier = aws_rds_cluster.default.id
     instance_class = "db.serverless"
     engine = aws_rds_cluster.default.engine
@@ -38,6 +38,6 @@ resource "aws_rds_cluster_instance" "serverless_db01a" {
     copy_tags_to_snapshot = true
 
     tags = merge(var.tags, {
-        Name = "${var.tags.Name} ${data.aws_availability_zones.available.names[0]}"
+        Name = "${var.tags.Name} ${data.aws_availability_zones.available.names[count.index]}"
     })
 }
