@@ -14,7 +14,7 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster
 
 resource "aws_rds_cluster" "default" {
-    cluster_identifier = "${lower(var.tags.Name)}-aurora-cluster"
+    cluster_identifier = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}-aurora-cluster"
 
     # PostgreSQL
     #engine = "aurora-postgresql"

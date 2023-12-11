@@ -20,7 +20,7 @@ resource "aws_rds_cluster_instance" "serverless_db01a" {
     # on the configured number of subnets.
     count = 0
 
-    identifier = "aurora-serverless-${data.aws_availability_zones.available.names[count.index]}"
+    identifier = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}-${data.aws_availability_zones.available.names[count.index]}"
     cluster_identifier = aws_rds_cluster.default.id
     instance_class = "db.serverless"
     engine = aws_rds_cluster.default.engine
