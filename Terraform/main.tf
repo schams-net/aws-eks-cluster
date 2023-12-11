@@ -84,6 +84,12 @@ module "helm_charts" {
     tags = var.tags
 }
 
+# Kubernetes-specific resources and data sources
+module "kubernetes" {
+    source = "./modules/kubernetes"
+    tags = var.tags
+}
+
 # Amazon CloudFront
 module "aws_cloudfront" {
     source = "./modules/cloudfront"
