@@ -59,3 +59,15 @@ resource "aws_secretsmanager_secret_version" "redis_cluster_endpoint" {
     secret_id = aws_secretsmanager_secret.redis_cluster_endpoint.id
     secret_string = local.redis_cluster_endpoint
 }
+
+resource "aws_secretsmanager_secret" "ses_notifications_basic_auth" {
+    name = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}_ses_notifications_basic_auth"
+    description = "[${var.tags.Name}] Randomly generated access details for the basic authentication (SES notifications through SNS subscription)"
+    recovery_window_in_days = 0
+    tags = var.tags
+}
+
+resource "aws_secretsmanager_secret_version" "ses_notifications_basic_auth" {
+    secret_id = aws_secretsmanager_secret.ses_notifications_basic_auth.id
+    secret_string = local.ses_notifications_basic_auth
+}

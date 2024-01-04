@@ -37,6 +37,16 @@ locals {
             cluster_endpoint = var.redis_cluster.cache_nodes[0].address
         }
     )
+    ses_notifications_basic_auth = templatefile(
+        "${path.module}/templates/ses_notifications_basic_auth.tftpl",
+        {
+            username = local.ses_notifications_basic_auth_username
+            password = local.ses_notifications_basic_auth_password
+            endpoint = var.ses_notifications_endpoint
+        }
+    )
+    ses_notifications_basic_auth_username = sha1(random_uuid.basic_authentication_username.result)
+    ses_notifications_basic_auth_password = sha1(random_uuid.basic_authentication_password.result)
 }
 
 # The random_password resource uses a cryptographic random number generator.
@@ -48,4 +58,10 @@ resource "random_password" "password" {
     length = 16
     special = true
     override_special = "!#$%&*?"
+}
+
+resource "random_uuid" "basic_authentication_username" {
+}
+
+resource "random_uuid" "basic_authentication_password" {
 }

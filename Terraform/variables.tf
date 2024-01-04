@@ -12,6 +12,12 @@ variable "region" {
     default = "ap-southeast-2"
 }
 
+# See "Secrets Manager" for basic auth access details (user name and password)
+variable "ses_notifications_endpoint" {
+    type = string
+    default = "https://example.com/ses-feedback-notifications"
+}
+
 variable "tags" {
     type = map
     default = {

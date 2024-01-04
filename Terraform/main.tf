@@ -31,6 +31,7 @@ module "aws_secrets_manager" {
     mq_broker_access_details = module.aws_mq.mq_broker_access_details
     s3_buckets = module.aws_s3.buckets
     redis_cluster = module.aws_elasticache.redis_cluster
+    ses_notifications_endpoint = var.ses_notifications_endpoint
     tags = var.tags
 }
 
@@ -50,6 +51,8 @@ module "aws_eks" {
 # Amazon Simple Notification Service (SNS)
 module "aws_sns" {
     source = "./modules/sns"
+    ses_notifications_basic_auth = module.aws_secrets_manager.ses_notifications_basic_auth
+    ses_notifications_endpoint = var.ses_notifications_endpoint
     tags = var.tags
 }
 

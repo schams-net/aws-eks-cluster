@@ -14,6 +14,10 @@ variable "s3_buckets" {
 variable "redis_cluster" {
 }
 
+variable "ses_notifications_endpoint" {
+    type = string
+}
+
 variable "tags" {
     type = map
 }
