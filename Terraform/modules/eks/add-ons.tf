@@ -46,8 +46,11 @@ resource "aws_eks_addon" "kube_proxy" {
 
     # Kubernetes version 1.28
     #addon_version = "v1.28.2-minimal-eksbuild.2"
-    #addon_version = "v1.28.1-eksbuild.1" # default
-    addon_version = "v1.28.2-eksbuild.2"
+    #addon_version = "v1.28.2-eksbuild.2"
+
+    # Kubernetes version 1.29
+    #addon_version = "v1.29.0-eksbuild.1" (default)
+    addon_version = "v1.29.0-eksbuild.3"
 
     # Don't try to install the add-on until the EKS node group is available
     depends_on = [ aws_eks_node_group.default ]
@@ -73,8 +76,11 @@ resource "aws_eks_addon" "coredns" {
     #addon_version = "v1.10.1-eksbuild.4"
 
     # Kubernetes version 1.28
-    #addon_version = "v1.10.1-eksbuild.2" # default
-    addon_version = "v1.10.1-eksbuild.6"
+    #addon_version = "v1.10.1-eksbuild.4"
+
+    # Kubernetes version 1.29
+    #addon_version = "v1.11.1-eksbuild.4" (default)
+    addon_version = "v1.11.1-eksbuild.6"
 
     # Don't try to install the add-on until the EKS node group is available
     depends_on = [ aws_eks_node_group.default ]
@@ -85,8 +91,11 @@ resource "aws_eks_addon" "vpc_cni" {
     addon_name = "vpc-cni"
 
     # Kubernetes version 1.23, 1.24, 1.25, 1.26, 1.27, 1.28
-    # addon_version = "v1.14.1-eksbuild.1" # default
-    addon_version = "v1.15.4-eksbuild.1"
+    #addon_version = "v1.15.1-eksbuild.1"
+
+    # Kubernetes version 1.29
+    #addon_version = "v1.16.0-eksbuild.1" (default)
+    addon_version = "v1.16.2-eksbuild.1"
 
     # Don't try to install the add-on until the EKS node group is available
     depends_on = [ aws_eks_node_group.default ]
