@@ -24,18 +24,6 @@ resource "aws_secretsmanager_secret_version" "rds_aurora_access_details" {
     secret_string = local.rds_aurora_access_details
 }
 
-resource "aws_secretsmanager_secret" "mq_broker_access_details" {
-    name = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}_mq_broker_access_details"
-    description = "[${var.tags.Name}] Access details of the Amazon MQ broker user"
-    recovery_window_in_days = 0
-    tags = var.tags
-}
-
-resource "aws_secretsmanager_secret_version" "mq_broker_access_details" {
-    secret_id = aws_secretsmanager_secret.mq_broker_access_details.id
-    secret_string = local.mq_broker_access_details
-}
-
 resource "aws_secretsmanager_secret" "s3_buckets" {
     name = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}_s3_buckets"
     description = "[${var.tags.Name}] S3 bucket names"

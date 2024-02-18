@@ -28,7 +28,6 @@ module "aws_rds_aurora" {
 module "aws_secrets_manager" {
     source = "./modules/secrets-manager"
     rds_aurora_cluster = module.aws_rds_aurora.cluster
-    mq_broker_access_details = module.aws_mq.mq_broker_access_details
     s3_buckets = module.aws_s3.buckets
     redis_cluster = module.aws_elasticache.redis_cluster
     ses_notifications_endpoint = var.ses_notifications_endpoint
@@ -59,14 +58,6 @@ module "aws_sns" {
 # Amazon CloudWatch
 module "aws_cloudwatch" {
     source = "./modules/cloudwatch"
-    tags = var.tags
-}
-
-# Amazon MQ
-module "aws_mq" {
-    source = "./modules/mq"
-    vpc = module.aws_vpc.vpc
-    subnets = module.aws_vpc.subnets.private
     tags = var.tags
 }
 

@@ -16,14 +16,6 @@ locals {
             password = random_password.password.result
         }
     )
-    mq_broker_access_details = templatefile(
-        "${path.module}/templates/mq_broker_access_details.tftpl",
-        {
-            username = var.mq_broker_access_details.username
-            password = var.mq_broker_access_details.password
-            endpoint = var.mq_broker_access_details.endpoint
-        }
-    )
     s3_buckets = templatefile(
         "${path.module}/templates/s3_buckets.tftpl",
         {
@@ -47,21 +39,4 @@ locals {
     )
     ses_notifications_basic_auth_username = sha1(random_uuid.basic_authentication_username.result)
     ses_notifications_basic_auth_password = sha1(random_uuid.basic_authentication_password.result)
-}
-
-# The random_password resource uses a cryptographic random number generator.
-# https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password
-#
-# Password rules for ActiveMQ: min 12 characters, at least 4 unique characters.
-# Can't contain commas (,), colons (:), equals signs (=), spaces or non-printable ASCII characters
-resource "random_password" "password" {
-    length = 16
-    special = true
-    override_special = "!#$%&*?"
-}
-
-resource "random_uuid" "basic_authentication_username" {
-}
-
-resource "random_uuid" "basic_authentication_password" {
 }
