@@ -20,10 +20,6 @@
 # Terrafom Documentation:
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_openid_connect_provider
 
-data "tls_certificate" "irsa" {
-    url = var.eks_cluster.identity[0].oidc[0].issuer
-}
-
 resource "aws_iam_openid_connect_provider" "irsa" {
     client_id_list = ["sts.amazonaws.com"]
     thumbprint_list = data.tls_certificate.irsa.certificates[*].sha1_fingerprint

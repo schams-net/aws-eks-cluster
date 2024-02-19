@@ -1,8 +1,8 @@
 # AWS IAM Role "Amazon EKS Node Group"
 #
 # Description:
-# The resource provides an IAM role for the Kubernetes cluster. AWS-managed IAM policies are attached
-# to the role.
+# The resource provides an IAM role for the service account. AWS-managed IAM policies and inline
+# policies can be attached to the role.
 #
 # AWS Documentation:
 # https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html
