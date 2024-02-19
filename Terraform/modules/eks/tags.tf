@@ -24,15 +24,3 @@ resource "aws_autoscaling_group_tag" "tag_name" {
         aws_eks_node_group.default
     ]
 }
-
-resource "aws_autoscaling_group_tag" "tag_billing_id" {
-    autoscaling_group_name = aws_eks_node_group.default.resources[0].autoscaling_groups[0].name
-    tag {
-        key = "billing-id"
-        value = var.tags.billing-id
-        propagate_at_launch = true
-    }
-    depends_on = [
-        aws_eks_node_group.default
-    ]
-}
