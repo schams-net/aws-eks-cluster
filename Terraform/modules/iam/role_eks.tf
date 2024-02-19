@@ -15,10 +15,9 @@
 resource "aws_iam_role" "eks" {
     name = "${var.tags.Name}-AmazonEKS"
     assume_role_policy = file("${path.module}/json/assume_role_eks.json")
-    tags = {
+    tags = merge(var.tags, {
         Name = "${var.tags.Name}-AmazonEKS"
-        billing-id = var.tags.billing-id
-    }
+    })
 }
 
 resource "aws_iam_role_policy_attachment" "amazon_eks_cluster_policy" {

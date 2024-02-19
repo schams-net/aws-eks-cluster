@@ -31,22 +31,19 @@ resource "aws_launch_template" "default" {
 
     tag_specifications {
         resource_type = "instance"
-        tags = {
+        tags = merge(var.tags, {
             Name = "[${var.tags.Name}] worker nodes"
-            billing-id = var.tags.billing-id
-        }
+        })
     }
 
     tag_specifications {
         resource_type = "volume"
-        tags = {
+        tags = merge(var.tags, {
             Name = "[${var.tags.Name}] worker nodes"
-            billing-id = var.tags.billing-id
-        }
+        })
     }
 
-    tags = {
-        Name = "[${var.tags.Name}]"
-        billing-id = var.tags.billing-id
-    }
+    tags = merge(var.tags, {
+        Name = var.tags.Name
+    })
 }
